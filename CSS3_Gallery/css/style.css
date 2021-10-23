@@ -1,5 +1,202 @@
 /* STYLE CSS */
 
 
+/*Style Utama*/
+
+body {
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+ul {
+    list-style-type: none;
+}
+
+h1 {
+    text-align: center;
+    text-shadow: 0 0 10px red;
+    color: white;
+}
 
 
+.container {
+    width: 80%;
+    height: 15vh;
+    background-color: white;
+    margin: auto;
+    padding: 10px 0;
+    box-shadow: 0 0 5px 1px red;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.gallery li {
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 0 5px 1px red;
+    float: left;
+    margin-right: 0;
+    position: relative;
+}
+
+.gallery li,
+.gallery li img.ab,
+.gallery li span {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.gallery li span {
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 60px;
+    color: white;
+    text-shadow: 0 0 1px red;
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+    transition: .3s;
+}
+
+.gallery li a:hover span {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+}
+
+
+
+
+
+
+/*overlay*/
+.overlay {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0);
+    z-index: 100;
+    transition: 1s;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.overlay:target {
+    right: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+    width: auto;
+    height: auto;
+}
+
+.overlay:target img {
+    animation: anime 1s;
+}
+
+.overlay img {
+    max-width: 50%;
+}
+
+.overlay .close {
+    position: absolute;
+    top: 10px;
+    left: 46%;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    background-size: cover;
+    border: 1px solid red;
+    padding: 5px 10px;
+    opacity: 0;
+}
+
+.overlay:target .close {
+    animation: close .5s .5s forwards;
+}
+
+.overlay:target .right,
+.overlay:target .left {
+    animation: segitiga .5s .5s forwards;
+}
+
+/*navigasi*/
+.right,
+.left {
+    width: 40px;
+    height: 40px;
+    background-image: url(../img/right.png);
+    position: absolute;
+    text-indent: -9999px;
+    top: 15%;
+    margin-left: -10px;
+    opacity: 0;
+}
+
+.left {
+    background-image: url(../img/left.png);
+    margin-left: -30px;
+}
+
+
+
+/* animasi */
+@keyframes anime {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes close {
+    0% {
+        opacity: 0;
+        margin-top: -80px;
+    }
+
+    100% {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+@keyframes segitiga {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+/*micro clearfix*/
+.cf:before, .cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
